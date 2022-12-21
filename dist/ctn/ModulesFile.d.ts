@@ -7,3 +7,8 @@ export declare class Query {
     poolId: string;
     percentile: number;
 }
+export declare class QuerySolution {
+    count: number;
+    result: number;
+    constructor(count: number, result: number);
+}

@@ -19,3 +19,13 @@ export class Query
     @IsNumber()
     public percentile:number;
 }
+export class QuerySolution
+{
+    public count:number;
+    public result:number;
+
+    constructor(count: number, result: number) {
+        this.count = count;
+        this.result = result;
+    }
+}

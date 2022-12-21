@@ -26,11 +26,14 @@ let ContainerController = class ContainerController {
     getElement(id) {
         return this.appService.getElement(id);
     }
-    create1(body) {
+    postPool(body) {
         return this.appService.postElement(body);
     }
-    create2(body) {
-        return this.appService.Calculate(body);
+    postQuery1(body) {
+        return this.appService.Calculate1(body);
+    }
+    postQuery2(body) {
+        return this.appService.Calculate2(body);
     }
 };
 __decorate([
@@ -40,28 +43,35 @@ __decorate([
     __metadata("design:returntype", String)
 ], ContainerController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ContainerController.prototype, "getElement", null);
 __decorate([
-    (0, common_1.Post)('pool'),
+    (0, common_1.Post)("pool"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [ModulesFile_1.Element]),
     __metadata("design:returntype", void 0)
-], ContainerController.prototype, "create1", null);
+], ContainerController.prototype, "postPool", null);
 __decorate([
-    (0, common_1.Post)('quantile'),
+    (0, common_1.Post)("quantile1"),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [ModulesFile_1.Query]),
     __metadata("design:returntype", void 0)
-], ContainerController.prototype, "create2", null);
+], ContainerController.prototype, "postQuery1", null);
+__decorate([
+    (0, common_1.Post)("quantile2"),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [ModulesFile_1.Query]),
+    __metadata("design:returntype", void 0)
+], ContainerController.prototype, "postQuery2", null);
 ContainerController = __decorate([
-    (0, common_1.Controller)('container'),
+    (0, common_1.Controller)("container"),
     __metadata("design:paramtypes", [ctn_services_1.ContainerServices])
 ], ContainerController);
 exports.ContainerController = ContainerController;

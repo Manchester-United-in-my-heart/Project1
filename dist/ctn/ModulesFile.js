@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Query = exports.Element = void 0;
+exports.QuerySolution = exports.Query = exports.Element = void 0;
 const class_validator_1 = require("class-validator");
 class Element {
     constructor(poolId, poolValue) {
@@ -37,4 +37,11 @@ __decorate([
     __metadata("design:type", Number)
 ], Query.prototype, "percentile", void 0);
 exports.Query = Query;
+class QuerySolution {
+    constructor(count, result) {
+        this.count = count;
+        this.result = result;
+    }
+}
+exports.QuerySolution = QuerySolution;
 //# sourceMappingURL=ModulesFile.js.map

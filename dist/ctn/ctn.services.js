@@ -38,17 +38,42 @@ let ContainerServices = class ContainerServices {
             return "Appended";
         }
     }
-    Calculate(query) {
+    Calculate1(query) {
         let x = this.getElement(query.poolId);
         if (!x)
             return "notFound";
-        x.poolValue.sort();
+        x.poolValue = x.poolValue.sort((a, b) => (a - b));
+        if (query.percentile <= 0)
+            return new ModulesFile_1.QuerySolution(x.poolValue.length, x.poolValue[0] - 1);
+        if (query.percentile >= 100)
+            return new ModulesFile_1.QuerySolution(x.poolValue.length, x.poolValue[x.poolValue.length - 1] + 1);
         let n = x.poolValue.length;
         let rank = query.percentile / 100;
         let res = rank * n;
-        if (res % 1 !== 0)
-            res = Math.floor(res) + 1;
-        return x.poolValue[res - 1];
+        res = Math.ceil(res);
+        return new ModulesFile_1.QuerySolution(n, x.poolValue[res - 1]);
+    }
+    Calculate2(query) {
+        let x = this.getElement(query.poolId);
+        if (!x)
+            return "notFound";
+        x.poolValue = x.poolValue.sort((a, b) => (a - b));
+        if (query.percentile <= 0)
+            return new ModulesFile_1.QuerySolution(x.poolValue.length, x.poolValue[0] - 1);
+        if (query.percentile >= 100)
+            return new ModulesFile_1.QuerySolution(x.poolValue.length, x.poolValue[x.poolValue.length - 1] + 1);
+        let n = x.poolValue.length;
+        let rank = query.percentile / 100;
+        let res = rank * n;
+        if (Math.ceil(res) === Math.floor(res))
+            return new ModulesFile_1.QuerySolution(n, x.poolValue[res]);
+        res = res - 1;
+        let x0 = Math.floor(res);
+        let x1 = Math.ceil(res);
+        let p1 = x.poolValue[x1];
+        let p0 = x.poolValue[x0];
+        let result = (res - x0) * (p1 - p0) / (x1 - x0) + p0;
+        return new ModulesFile_1.QuerySolution(n, result);
     }
 };
 ContainerServices = __decorate([

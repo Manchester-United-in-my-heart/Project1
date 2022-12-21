@@ -4,5 +4,8 @@ import { reportUnhandledError } from "rxjs/internal/util/reportUnhandledError";
 import { IsDecimal } from "class-validator";
 @Injectable()
 export class AppService {
+  getHello()
+  {
 
+  }
 }

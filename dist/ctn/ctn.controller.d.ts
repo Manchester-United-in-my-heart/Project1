@@ -5,6 +5,7 @@ export declare class ContainerController {
     constructor(appService: ContainerServices);
     getHello(): string;
     getElement(id: string): Element;
-    create1(body: Element): string;
-    create2(body: Query): number | "notFound";
+    postPool(body: Element): string;
+    postQuery1(body: Query): String | import("./ModulesFile").QuerySolution;
+    postQuery2(body: Query): String | import("./ModulesFile").QuerySolution;
 }
